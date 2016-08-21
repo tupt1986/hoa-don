@@ -4,17 +4,24 @@
     {{Session::get('msg')}}
 @endif
 @section('title')
-    QUẢN LÝ NGƯỜI DÙNG &nbsp;&nbsp;&nbsp;
-    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/create')}}', '_self')">
-        <i class="icon-user-follow"></i> Thêm mới
-    </button>
+    QUẢN LÝ NGƯỜI DÙNG
 @endsection
 
 @section('content')
     <div class="headline">
         <h2 class="heading-sm">Danh sách người dùng - quyền truy cập</h2>
     </div>
-
+<div class="row" align="right">
+    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/create')}}', '_self')">
+        <i class="icon-user-follow"></i> Thêm người dùng mới
+    </button>
+    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/import')}}', '_self')">
+        <i class="icon-user-follow"></i> Import
+    </button>
+    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/export')}}', '_self')">
+        <i class="icon-user-follow"></i> Export
+    </button>
+</div>
     <table class="table table-hover">
         <thead>
         <tr>

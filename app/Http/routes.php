@@ -23,62 +23,145 @@ Route::auth();
 */
 //list user
 Route::get('/users', [
-    'as'=>'users',
+    'as' => 'users',
     'uses' => 'UserController@index',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
 //create user
-Route::get('/users/create',[
-    'uses'=>'UserController@create',
-    'as'=>'user.create',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
-
+Route::get('/users/create', [
+    'uses' => 'UserController@create',
+    'as' => 'user.create',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
-Route::post('/users/create',[
-    'uses'=>'UserController@store',
-    'as'=>'user.store',
+Route::get('/users/export',[
+    'uses'=>'UserController@export',
+    'as'=>'user.export',
     'middleware'=>'roles',
     'roles'=>['Admin'],
+]);
+Route::get('/users/import',[
+    'uses'=>'UserController@view_import',
+    'as'=>'user.viewimport',
+    'middleware'=>'roles',
+    'roles'=>['Admin'],
+]);
+Route::post('/users/import',[
+    'uses'=>'UserController@import',
+    'as'=>'user.import',
+    'middleware'=>'roles',
+    'roles'=>['Admin'],
+]);
+
+Route::post('/users/create', [
+    'uses' => 'UserController@store',
+    'as' => 'user.store',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 
 ]);
 //Gan quyen truy cap
-Route::post('/users/assignroles',[
+Route::post('/users/assignroles', [
     'uses' => 'UserController@assignRoles',
     'as' => 'user.assignroles',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
 //view thong tin update user
-Route::get('/users/{id_user}',[
-    'uses'=>'UserController@edit',
-    'as'=>'user.update',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
-])->where(['id_user','[0-9]+']);
+Route::get('/users/{id_user}', [
+    'uses' => 'UserController@edit',
+    'as' => 'user.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
+])->where(['id_user', '[0-9]+']);
 //update user
-Route::patch('/users/{id_user}',[
-    'uses'=>'UserController@update',
-    'as'=>'user.update',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+Route::patch('/users/{id_user}', [
+    'uses' => 'UserController@update',
+    'as' => 'user.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
 //xoa user
-Route::delete('/users/{id_user}',[
-    'uses'=>'UserController@destroy',
-    'as'=>'user.destroy',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+Route::delete('/users/{id_user}', [
+    'uses' => 'UserController@destroy',
+    'as' => 'user.destroy',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
 //reset password user
-Route::post('/users/{id_user}',[
-    'uses'=>'UserController@resetpassword',
-    'as'=>'user.resetpassword',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+Route::post('/users/{id_user}', [
+    'uses' => 'UserController@resetpassword',
+    'as' => 'user.resetpassword',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
+]);
+/*
+|--------------------------------------------------------------------------
+| Application Routes Donvis (đơn vị)
+|--------------------------------------------------------------------------
+*/
+Route::get('/donvi', [
+    'uses' => 'DonviController@donvi_index',
+    'as' => 'donvi.list',
+]);
+Route::get('/donvi/create', [
+    'uses' => 'DonviController@donvi_create',
+    'as' => 'donvi.create',
+]);
+Route::post('/donvi/create', [
+    'uses' => 'DonviController@donvi_store',
+    'as' => 'donvi.store',
+]);
+//xoa donvi
+Route::delete('/donvi/{id}', [
+    'uses' => 'DonviController@donvi_destroy',
+    'as' => 'donvi.destroy',
+]);
+Route::get('/donvi/{id}', [
+    'uses' => 'DonviController@donvi_edit',
+    'as' => 'donvi.edit',
+]);
+Route::patch('/donvi/{id}', [
+    'uses' => 'DonviController@donvi_update',
+    'as' => 'donvi.update',
+]);
+/*
+|--------------------------------------------------------------------------
+| Application Routes Donvis (bưu cục)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/buucuc', [
+    'uses' => 'DonviController@buucuc_index',
+    'as' => 'buucuc.list',
+]);
+Route::get('/buucuc/create', [
+    'uses' => 'DonviController@buucuc_create',
+    'as' => 'buucuc.create',
+]);
+Route::post('/buucuc/create', [
+    'uses' => 'DonviController@buucuc_store',
+    'as' => 'buucuc.store',
+]);
+//xoa buu cuc
+Route::delete('/buucuc/{id}', [
+    'uses' => 'DonviController@buucuc_destroy',
+    'as' => 'buucuc.destroy',
+]);
+Route::get('/buucuc/{id}', [
+    'uses' => 'DonviController@buucuc_edit',
+    'as' => 'buucuc.edit'
+]);
+Route::patch('/buucuc/{id}', [
+    'uses' => 'DonviController@buucuc_update',
+    'as' => 'buucuc.update'
 ]);
 
 
-
+/*
+|--------------------------------------------------------------------------
+| Application Routes home
+|--------------------------------------------------------------------------
+*/
 Route::get('/home', 'HomeController@index');

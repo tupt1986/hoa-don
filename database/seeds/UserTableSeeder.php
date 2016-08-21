@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Role;
+Use App\Donvi;
 class UserTableSeeder extends Seeder
 {
     /**
@@ -15,25 +16,30 @@ class UserTableSeeder extends Seeder
         $role_user = Role::where('name','User')->first();
         $role_manager = Role::where('name','Manager')->first();
         $role_admin = Role::where('name','Admin')->first();
+        $donvi = Donvi::find(2);
+
 
         $user = new User();
         $user -> name= 'name user';
         $user -> username = 'user';
-        $user -> password = bcrypt('123456');
+        $user -> birthday = '20160101';
+        $user->donvis()->associate($donvi);
         $user -> save();
         $user->roles()->attach($role_user);
 
         $manager = new User();
-        $manager -> name = 'name manager';
+        $manager -> name= 'name manager';
         $manager -> username = 'manager';
-        $manager -> password = bcrypt('123456');
+        $manager -> birthday = '20160101';
+        $manager->donvis()->associate($donvi);
         $manager -> save();
         $manager->roles()->attach($role_manager);
 
         $admin = new User();
-        $admin -> name = 'name admin';
+        $admin -> name= 'name admin';
         $admin -> username = 'admin';
-        $admin -> password = bcrypt('123456');
+        $admin -> birthday = '20160101';
+        $admin->donvis()->associate($donvi);
         $admin -> save();
         $admin->roles()->attach($role_admin);
     }

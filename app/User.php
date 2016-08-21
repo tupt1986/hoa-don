@@ -5,18 +5,24 @@ namespace App;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use spec\Prophecy\Promise\RequiredArgumentException;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Role;
+use App\Donvi;
 
 class User extends Authenticatable
 {
+
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'password',
+        'name', 'username', 'password','donvi_id','birthday'
     ];
 
     /**
@@ -31,6 +37,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
+    }
+
+    public function donvis()
+    {
+        return $this->belongsTo('App\Donvi','donvi_id');
     }
 
     public function hasAnyRole($roles)

@@ -128,11 +128,11 @@
                         </li>
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-settings"></i> Thiết lập
+                                <i class="icon-settings"></i>&nbsp;&nbsp;&nbsp;Thiết lập
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="index.php?cat=setting&act=viewdonvi">Quản lý đơn vị</a></li>
-                                <li><a href="index.php?cat=setting&act=viewbuucuc">Quản lý Bưu Cục</a></li>
+                                <li><a href="{{route('donvi.list')}}"><i class="icon-home"></i>&nbsp;&nbsp;&nbsp;Quản lý đơn vị</a></li>
+                                <li><a href="{{route('buucuc.list')}}"><i class="icon-envelope-open"></i>&nbsp;&nbsp;&nbsp;Quản lý Bưu Cục</a></li>
                                 <li><a href="{{route('users')}}"><i class="icon-users"></i>&nbsp;&nbsp;&nbsp;Quản lý người dùng</a></li>
                             </ul>
                         </li>
