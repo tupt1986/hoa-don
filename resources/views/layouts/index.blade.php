@@ -131,6 +131,7 @@
                                 <i class="icon-settings"></i>&nbsp;&nbsp;&nbsp;Thiết lập
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a href="{{route('loaihoadon.list')}}"><i class="icon-docs"></i>&nbsp;&nbsp;&nbsp;Quản lý loại hóa đơn</a></li>
                                 <li><a href="{{route('donvi.list')}}"><i class="icon-home"></i>&nbsp;&nbsp;&nbsp;Quản lý đơn vị</a></li>
                                 <li><a href="{{route('buucuc.list')}}"><i class="icon-envelope-open"></i>&nbsp;&nbsp;&nbsp;Quản lý Bưu Cục</a></li>
                                 <li><a href="{{route('users')}}"><i class="icon-users"></i>&nbsp;&nbsp;&nbsp;Quản lý người dùng</a></li>

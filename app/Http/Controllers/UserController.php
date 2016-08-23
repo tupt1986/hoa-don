@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\User;
 use App\Role;
 use App\Donvi;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -98,7 +97,7 @@ class UserController extends Controller
 
     public function destroy($id){
         $user = User::findOrFail($id);
-        var_dump($user);
+        //var_dump($user);
         //$user -> delete();
         if ($user -> delete()) {
             flash()->overlay('Tài khoản <b>'.$user->username.'</b> đã được xóa thành công. ','Xóa tài khoản');

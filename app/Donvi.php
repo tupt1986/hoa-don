@@ -16,4 +16,10 @@ class Donvi extends Model
     public function Users(){
         return $this->hasMany('App\User');
     }
+
+    protected static  function boot(){
+        Donvi::deleting(function($donvi){
+           $donvi->users()->delete();
+        });
+    }
 }

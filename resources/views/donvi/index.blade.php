@@ -5,16 +5,17 @@
 @endif
 @section('title')
     QUẢN LÝ ĐƠN VỊ &nbsp;&nbsp;&nbsp;
-    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/donvi/create')}}', '_self')">
-        <i class="icon-home"></i> Thêm mới
-    </button>
 @endsection
 
 @section('content')
     <div class="headline">
         <h2 class="heading-sm">Danh sách đơn vị huyện - thành phố</h2>
     </div>
-
+    <div class="row" align="right">
+        <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/donvi/create')}}', '_self')">
+            <i class="icon-home"></i> Thêm mới
+        </button>
+    </div>
     <table class="table table-hover">
         <thead>
         <tr>

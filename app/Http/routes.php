@@ -35,23 +35,23 @@ Route::get('/users/create', [
     'middleware' => 'roles',
     'roles' => ['Admin'],
 ]);
-Route::get('/users/export',[
-    'uses'=>'UserController@export',
-    'as'=>'user.export',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+Route::get('/users/export', [
+    'uses' => 'UserController@export',
+    'as' => 'user.export',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
-Route::get('/users/import',[
-    'uses'=>'UserController@view_import',
-    'as'=>'user.viewimport',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+Route::get('/users/import', [
+    'uses' => 'UserController@view_import',
+    'as' => 'user.viewimport',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
-Route::post('/users/import',[
-    'uses'=>'UserController@import',
-    'as'=>'user.import',
-    'middleware'=>'roles',
-    'roles'=>['Admin'],
+Route::post('/users/import', [
+    'uses' => 'UserController@import',
+    'as' => 'user.import',
+    'middleware' => 'roles',
+    'roles' => ['Admin'],
 ]);
 
 Route::post('/users/create', [
@@ -157,8 +157,35 @@ Route::patch('/buucuc/{id}', [
     'uses' => 'DonviController@buucuc_update',
     'as' => 'buucuc.update'
 ]);
-
-
+/*
+|--------------------------------------------------------------------------
+| Application Routes Loaibuugui
+|--------------------------------------------------------------------------
+*/
+Route::get('/loaihoadon', [
+    'uses' => 'LoaihoadonController@index',
+    'as' => 'loaihoadon.list',
+]);
+Route::get('/loaihoadon/create', [
+    'uses' => 'LoaihoadonController@create',
+    'as' => 'loaihoadon.create',
+]);
+Route::post('/loaihoadon/create',[
+   'uses'=>'LoaihoadonController@store',
+    'as'=>'loaihoadon.store',
+]);
+Route::get('/loaihoadon/{id}',[
+   'uses'=>'LoaihoadonController@edit',
+    'as'=>'loaihoadon.edit',
+]);
+Route::patch('/loaihoadon/{id}',[
+    'uses'=>'LoaihoadonController@update',
+    'as'=>'loaihoadon.update',
+]);
+Route::delete('/loaihoadon/{id}',[
+    'uses'=>'LoaihoadonController@destroy',
+    'as'=>'loaihoadon.destroy',
+]);
 /*
 |--------------------------------------------------------------------------
 | Application Routes home

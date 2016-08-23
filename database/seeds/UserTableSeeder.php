@@ -16,11 +16,18 @@ class UserTableSeeder extends Seeder
         $role_user = Role::where('name','User')->first();
         $role_manager = Role::where('name','Manager')->first();
         $role_admin = Role::where('name','Admin')->first();
-        $donvi = Donvi::find(2);
+        $donvi = Donvi::find(1);
 
+        $admin = new User();
+        $admin -> name= 'Administrator';
+        $admin -> username = 'admin';
+        $admin -> birthday = '20160101';
+        $admin->donvis()->associate($donvi);
+        $admin -> save();
+        $admin->roles()->attach($role_admin);
 
         $user = new User();
-        $user -> name= 'name user';
+        $user -> name= 'test user';
         $user -> username = 'user';
         $user -> birthday = '20160101';
         $user->donvis()->associate($donvi);
@@ -28,19 +35,11 @@ class UserTableSeeder extends Seeder
         $user->roles()->attach($role_user);
 
         $manager = new User();
-        $manager -> name= 'name manager';
+        $manager -> name= 'test manager';
         $manager -> username = 'manager';
         $manager -> birthday = '20160101';
         $manager->donvis()->associate($donvi);
         $manager -> save();
         $manager->roles()->attach($role_manager);
-
-        $admin = new User();
-        $admin -> name= 'name admin';
-        $admin -> username = 'admin';
-        $admin -> birthday = '20160101';
-        $admin->donvis()->associate($donvi);
-        $admin -> save();
-        $admin->roles()->attach($role_admin);
     }
 }

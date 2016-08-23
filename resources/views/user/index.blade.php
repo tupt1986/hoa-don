@@ -11,39 +11,43 @@
     <div class="headline">
         <h2 class="heading-sm">Danh sách người dùng - quyền truy cập</h2>
     </div>
-<div class="row" align="right">
-    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/create')}}', '_self')">
-        <i class="icon-user-follow"></i> Thêm người dùng mới
-    </button>
-    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/import')}}', '_self')">
-        <i class="icon-user-follow"></i> Import
-    </button>
-    <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/export')}}', '_self')">
-        <i class="icon-user-follow"></i> Export
-    </button>
-</div>
+    <div class="row" align="right">
+        <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/create')}}', '_self')">
+            <i class="icon-user-follow"></i> Thêm người dùng mới
+        </button>
+        <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/import')}}', '_self')">
+            <i class="icon-user-follow"></i> Import
+        </button>
+        <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/users/export')}}', '_self')">
+            <i class="icon-user-follow"></i> Export
+        </button>
+    </div>
     <table class="table table-hover">
         <thead>
         <tr>
             <th>STT</th>
             <th>Họ và tên</th>
-            <th>Tài khoản đăng nhập</th>
-            <th>Quyền người dùng</th>
-            <th>Quyền quản lý</th>
-            <th>Quyền quản trị</th>
+            <th>Tài khoản</th>
+            <th>Ngày sinh</th>
+            <th>Đơn vị</th>
+            <th>Q. người dùng</th>
+            <th>Q. quản lý</th>
+            <th>Q. quản trị</th>
             <th>Thay đổi quyền</th>
-            <th>Chỉnh sửa thông tin</th>
-            <th>Xóa tài khoản</th>
-            <th>Reset mật khâu</th>
+            <th>Chỉnh sửa</th>
+            <th>Xóa tk</th>
+            <th>Reset password</th>
         </tr>
         </thead>
         <tbody>
         @foreach($users as $user)
             <tr>
-                <form action="{{route('user.assignroles')}}" method="post" >
+                <form action="{{route('user.assignroles')}}" method="post">
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->username}}<input type="hidden" name="username" value="{{$user->username}}"></td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$user->birthday}}</td>
+                    <td>{{$user->donvis->tendonvi}}</td>
                     <td>
                         <input type="checkbox" {{$user->hasRole('User') ? 'checked' : ''}} name="role_user"
                                id="role_user">
@@ -78,8 +82,6 @@
                         {{csrf_field()}}
                         <button type="submit" class="btn btn-success btn-xs">Reset password</button>
                     </form>
-                </td>
-
                 </td>
             </tr>
         @endforeach
