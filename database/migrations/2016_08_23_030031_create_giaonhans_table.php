@@ -16,8 +16,8 @@ class CreateGiaonhansTable extends Migration
             $table->increments('id');
             $table->integer('soquyen');
             $table->integer('loaihoadon_id');
-            $table->integer('sohdbatdau',7);
-            $table->integer('sohdkethuc',7);
+            $table->string('sohdbatdau',7);
+            $table->string('sohdketthuc',7);
             $table->date('ngaythang');
             $table->integer('nguoigiao_id');
             $table->integer('nguoinhan_id');

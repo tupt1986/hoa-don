@@ -47,6 +47,11 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="{{url('/')}}/assets/css/custom.css">
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{url('/')}}/assets/plugins/back-to-top.js"></script>
+
 <body>
 <div class="wrapper">
     <!--=== Header ===-->
@@ -110,19 +115,17 @@
                                         nhân</a></li>
                                 <li><a href="index.php?cat=tonghop&act=giaodichcho">Tổng hợp giao dịch ấn chỉ chờ xác
                                         nhận</a></li>
-                                <li><a href="index.php?cat=tonghop&act=giaodichhuy">Tổng hợp giao dịch ấn chỉ không được
-                                        chấp nhận</a></li>
+                                <li><a href="index.php?cat=tonghop&act=giaodichhuy">Tổng hợp giao dịch ấn chỉ không được chấp nhận</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                Xác nhận giao dịch
+                                Giao dịch
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="index.php?cat=nhapxuat&act=xacnhannhap">Xác nhận nhập/chuyển hoàn ấn chỉ từ
-                                        các đơn vị - cá nhân khác</a></li>
-                                <li><a href="index.php?cat=nhapxuat&act=xacnhanxoa">Xác nhận Xóa bỏ - mất - hủy ấn chỉ
-                                        cho đơn vị - cá nhân trực thuộc</a></li>
+                                <li><a href="{{route('giaonhans')}}">Quản lý giao dịch giao nhận hóa đơn</a></li>
+                                <li><a href="{{route('giaonhan.create')}}">Bàn giao hóa đơn</a></li>
+                                <li><a href="{{route('giaonhan.accept')}}">Giao dịch chờ xác nhận</a></li>
                             </ul>
 
                         </li>
@@ -169,9 +172,6 @@
 </div>
 
 @include('flash::message')
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{url('/')}}/assets/plugins/back-to-top.js"></script>
 
 <script>
     $('#flash-overlay-modal').modal();

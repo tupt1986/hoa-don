@@ -45,7 +45,7 @@
                 <form action="{{route('user.assignroles')}}" method="post">
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->username}}</td>
+                    <td>{{$user->username}}<input type="hidden" name="username" id="username" value="{{$user->username}}"></td>
                     <td>{{$user->birthday}}</td>
                     <td>{{$user->donvis->tendonvi}}</td>
                     <td>

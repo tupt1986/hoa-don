@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\giaonhan;
 
 class loaihoadon extends Model
 {
@@ -11,4 +12,10 @@ class loaihoadon extends Model
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['ten','mau','kyhieu'];
+
+    public function giaonhans(){
+        return $this->hasMany('App\giaonhan');
+    }
+
+
 }

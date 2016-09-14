@@ -55,7 +55,7 @@ class DonviTableSeeder extends Seeder
         $donvi_huyen5 -> save();
 
         $donvi_huyen6 = new Donvi();
-        $donvi_huyen6 -> tendonvi = 'Bưu điện Hoàng Mai1';
+        $donvi_huyen6 -> tendonvi = 'Bưu điện Hoàng Mai';
         $donvi_huyen6 -> donvi_id = 1;
         $donvi_huyen6 -> madonvi = '004792';
         $donvi_huyen6 -> loaidonvi = 1;

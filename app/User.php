@@ -44,6 +44,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Donvi','donvi_id');
     }
 
+    public function giaonhans(){
+        return $this->hasMany('App\giaonhan');
+    }
+
     public function hasAnyRole($roles)
 {
     if(is_array($roles))

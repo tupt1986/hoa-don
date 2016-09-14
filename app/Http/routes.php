@@ -170,22 +170,65 @@ Route::get('/loaihoadon/create', [
     'uses' => 'LoaihoadonController@create',
     'as' => 'loaihoadon.create',
 ]);
-Route::post('/loaihoadon/create',[
-   'uses'=>'LoaihoadonController@store',
-    'as'=>'loaihoadon.store',
+Route::post('/loaihoadon/create', [
+    'uses' => 'LoaihoadonController@store',
+    'as' => 'loaihoadon.store',
 ]);
-Route::get('/loaihoadon/{id}',[
-   'uses'=>'LoaihoadonController@edit',
-    'as'=>'loaihoadon.edit',
+Route::get('/loaihoadon/{id}', [
+    'uses' => 'LoaihoadonController@edit',
+    'as' => 'loaihoadon.edit',
 ]);
-Route::patch('/loaihoadon/{id}',[
-    'uses'=>'LoaihoadonController@update',
-    'as'=>'loaihoadon.update',
+Route::patch('/loaihoadon/{id}', [
+    'uses' => 'LoaihoadonController@update',
+    'as' => 'loaihoadon.update',
 ]);
-Route::delete('/loaihoadon/{id}',[
-    'uses'=>'LoaihoadonController@destroy',
-    'as'=>'loaihoadon.destroy',
+Route::delete('/loaihoadon/{id}', [
+    'uses' => 'LoaihoadonController@destroy',
+    'as' => 'loaihoadon.destroy',
 ]);
+/*
+|--------------------------------------------------------------------------
+| Application Routes Giao nhận
+|--------------------------------------------------------------------------
+*/
+Route::get('/giaonhan', [
+    'uses' => 'GiaonhanController@index',
+    'as' => 'giaonhans',
+]);
+Route::get('/giaonhan/create', [
+    'uses' => 'GiaonhanController@create',
+    'as' => 'giaonhan.create',
+]);
+Route::post('/giaonhan/create', [
+    'uses' => 'GiaonhanController@store',
+    'as' => 'giaonhan.store',
+]);
+Route::get('/giaonhan/accept', [
+    'uses' => 'GiaonhanController@checkaccept',
+    'as' => 'giaonhan.checkaccept',
+]);
+Route::post('/giaonhan/accept',[
+    'uses'=>'GiaonhanController@accept',
+    'as'=>'giaonhan.accept',
+]);
+Route::post('/giaonhan/deny',[
+    'uses'=>'GiaonhanController@deny',
+    'as'=>'giaonhan.deny',
+]);
+/*
+|--------------------------------------------------------------------------
+| Application Routes Ajax
+|--------------------------------------------------------------------------
+*/
+//lấy danh sách người dùng theo đơn vị
+Route::get('ajaxUser', function (Request $request) {
+    $id_donvi = $request::input(['id_donvi']);
+    $users = \App\User::where('donvi_id', $id_donvi)
+        ->where('id', '<>', Auth::user()->id)
+        ->get();
+    return Response::json($users);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes home
